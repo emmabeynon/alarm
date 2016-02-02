@@ -1,7 +1,30 @@
 {
-  "name": "HelloIonic",
-  "private": "true",
+  "name": "Alarm",
+  "private": true,
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.2.4"
+    "ionic": "driftyco/ionic-bower#1.2.4",
+    "angular-mocks": "^1.4.9",
+    "angular-route": "^1.4.9"
+  },
+  "homepage": "https://github.com/emmabeynon/alarm",
+  "authors": [
+    "emmabeynon <emma.beynon@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "bootstrap": "^3.3.6",
+    "angular": "^1.4.9"
   }
 }
