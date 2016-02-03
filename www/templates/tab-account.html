@@ -4,21 +4,26 @@
       <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Starting Point</span>
-        <input ng-model="settingsCtrl.startingPoint" name="startingPoint" type="text" placeholder="e.g. E1 6LT" id="starting-point">
+        <input ng-model="settingsCtrl.startingPoint" name="startingPoint" type="text" placeholder="Where does your journey start?" id="starting-point">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Destination Point</span>
-        <input type="text" placeholder="e.g. E1 6LT">
+        <input type="text" placeholder="Where are you going?" ng-model="settingsCtrl.endPoint" name="endPoint">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Arrival Time</span>
-        <input type="text" placeholder="e.g. E1 6LT">
+        <ionic-timepicker input-obj="timePickerObject12Hour">
+          <button class="button button-block button-positive overflowShow">
+            <standard-time-meridian etime='timePickerObject12Hour.inputEpochTime'></standard-time-meridian>
+            <strong etime="timePickerObject24Hour.inputEpochTime" class="ng-binding">{{timePickerObject24Hour.inputEpochTime}}</strong>
+          </button>
+        </ionic-timepicker>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Preparation time</span>
-        <input type="text" placeholder="e.g. E1 6LT">
+        <input type="number" placeholder="How long does it take to get ready?" ng-model="settingsCtrl.prepTime" name="prepTime">
       </label>
-      <button class="button button-block button-positive" type="submit" ng-click="settingsCtrl.saveData(settingsCtrl.startingPoint)">
+      <button class="button button-block button-positive" type="submit" ng-click="settingsCtrl.saveData(settingsCtrl.startingPoint, settingsCtrl.endPoint, settingsCtrl.prepTime)">
         Save
       </button>
     </form>

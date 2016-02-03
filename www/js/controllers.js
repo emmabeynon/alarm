@@ -39,12 +39,41 @@ angular.module('alarm.controllers', [])
 //   };
 // })
 
-.controller('SettingsCtrl', function() {
+.controller('SettingsCtrl', function($scope) {
   var self = this;
   var settings;
+  var time;
 
-  self.saveData = function(startingPoint) {
+  self.saveData = function(startingPoint, endPoint , prepTime) {
     window.localStorage['starting-point'] = startingPoint;
+    window.localStorage['end-point'] = endPoint;
+    window.localStorage['arrival-time'] = time;
+    window.localStorage['prep-time'] = prepTime;
+    console.log(prepTime)
     console.log(window.localStorage['starting-point']);
+    console.log(window.localStorage['end-point']);
+    console.log(window.localStorage['arrival-time']);
+    console.log(window.localStorage['prep-time']);
+
   };
+
+    $scope.timePickerObject12Hour = {
+    inputEpochTime: ((new Date()).getHours() * 60 * 60),
+    callback: function (val) {
+      timePicker12Callback(val);
+    }
+  };
+
+
+  function timePicker12Callback(val) {
+    if (typeof (val) === 'undefined') {
+      console.log('Time not selected');
+    } else {
+      $scope.timePickerObject12Hour.inputEpochTime = val;
+      var selectedTime = new Date(val * 1000);
+      time = selectedTime.getUTCHours() + ':' + selectedTime.getUTCMinutes();
+    }
+  }
+
+
 });
