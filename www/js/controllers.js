@@ -52,7 +52,6 @@ angular.module('alarm.controllers', [])
     }
   };
 
-
   function timePicker12Callback(val) {
     if (typeof (val) === 'undefined') {
       console.log('Time not selected');
@@ -61,9 +60,8 @@ angular.module('alarm.controllers', [])
       var selectedTime = new Date(val * 1000);
       mins = selectedTime.getUTCMinutes();
       hours = selectedTime.getUTCHours();
-      time = hours + ':' + mins
+      time = hours + ':' + mins;
     }
   }
-
 
 });
