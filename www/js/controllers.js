@@ -77,3 +77,27 @@ angular.module('alarm.controllers', [])
 
 
 });
+
+dummy.controller('DummyController', ['JourneyPlanner', function(JourneyPlanner) {
+  var self = this;
+  var start;
+  var end;
+
+  self.getJourneyInfo = function() {
+    JourneyPlanner.query(self.start, self.end)
+      .then(function(response) {
+        self.result = response.data;
+        var duration = response.data.journeys[1].duration;
+        var startTime = response.data.journeys[1].startDateTime;
+        var endTime = response.data.journeys[1].arrivalDateTime;
+        var disruptions = response.data.journeys[1].legs[0].isDisrupted;
+        var lineServiceStatus = response.data.lines[0].lineStatuses[0].statusSeverityDescription;
+        console.log(startTime);
+        console.log(endTime);
+        console.log(duration);
+        console.log(lineServiceStatus);
+        console.log(disruptions);
+        console.log(response.data);
+      });
+  };
+}]);
