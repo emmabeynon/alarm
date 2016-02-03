@@ -2,10 +2,10 @@ angular.module('alarm.journeyPlannerFactory', [])
 
 .factory('JourneyPlanner', ['$http', function($http) {
 
- var start = 'nw52nr';
- var end = 'e83qa';
- var date = '20160302';
- var desiredArrivalTime = '0900';
+ var start = window.localStorage['starting-point'];
+ var end = window.localStorage['end-point'];
+ // var date = '20160302';
+ var desiredArrivalTime = window.localStorage['full-time'];
  // var timeIs = 'arriving';
  // var journeyPreference = 'leastTime';
  // var mode = 'tube';
@@ -22,7 +22,7 @@ angular.module('alarm.journeyPlannerFactory', [])
          'from': start,
          'to': end,
          'time': desiredArrivalTime,
-         'date': date,
+        //  'date': date,
          // 'timeIs': timeIs,
          // 'journeyPreference': journeyPreference,
          // 'mode': mode,

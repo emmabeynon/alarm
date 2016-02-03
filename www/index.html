@@ -41,7 +41,7 @@
     <ion-nav-view></ion-nav-view>
     <script type="text/javascript">
       var now = new Date();
-      var tilAlarm = new Date(now.getFullYear(), now.getMonth(), now.getDate(), window.localStorage['arrival-time-hours'], window.localStorage['arrival-time-mins'], 0, 0) - now;
+      var tilAlarm = new Date(alarmTime) - now;
       var audio = new Audio('http://s0.vocaroo.com/media/download_temp/Vocaroo_s02iHzuYg1e2.mp3');
 
       var check = function() {

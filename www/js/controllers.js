@@ -6,21 +6,30 @@ angular.module('alarm.controllers', [])
 
 .controller('DashCtrl', function($scope, JourneyPlanner) {
   var self = this;
-  self.alarmTime = window.localStorage['full-time'];
-  self.alert = "this is a test message";
+  var arrivalEpoch = window.localStorage['epoch-time'];
+  var prepEpoch = window.localStorage['prep-time'];
+  var travelEpoch = window.localStorage['duration-time'] * 60000;
+  var alarmEpoch = (arrivalEpoch - prepEpoch - travelEpoch);
+
+  console.log(alarmEpoch);
+  self.alarmTime = alarmEpoch;
+  self.epoch = window.localStorage['epoch-time'];
+
+
 
   self.getJourneyInfo = function() {
     console.log("test");
     JourneyPlanner.query(self.start, self.end)
       .then(function(response) {
         self.result = response.data;
-        var duration = response.data.journeys[1].duration;
+        window.localStorage['duration-time'] = response.data.journeys[1].duration;
+        var duration = window.localStorage['duration-time'];
         var startTime = response.data.journeys[1].startDateTime;
         var endTime = response.data.journeys[1].arrivalDateTime;
         var disruptions = response.data.journeys[1].legs[0].isDisrupted;
         var lineServiceStatus = response.data.lines[0].lineStatuses[0].statusSeverityDescription;
         window.localStorage['line-status'] = lineServiceStatus;
-        self.lineStatus = window.localStorage['line-status'];
+        self.alert = window.localStorage['line-status'];
         console.log(startTime);
         console.log(endTime);
         console.log(duration);
@@ -61,20 +70,23 @@ angular.module('alarm.controllers', [])
   var mins;
   var hours;
   var time;
+  var epoch;
 
   self.saveData = function(startingPoint, endPoint , prepTime) {
+    var prepTimeEpoch = prepTime * 60 * 1000;
     window.localStorage['starting-point'] = startingPoint;
     window.localStorage['end-point'] = endPoint;
     window.localStorage['arrival-time-mins'] = mins;
     window.localStorage['arrival-time-hours'] = hours;
-    window.localStorage['prep-time'] = prepTime;
+    window.localStorage['prep-time'] = prepTimeEpoch;
     window.localStorage['full-time'] = time;
+    window.localStorage['epoch-time'] = epoch;
     console.log(window.localStorage['starting-point']);
     console.log(window.localStorage['end-point']);
     console.log(window.localStorage['arrival-time-hours']);
     console.log(window.localStorage['arrival-time-mins']);
     console.log(window.localStorage['prep-time']);
-    console.log(time);
+    console.log(window.localStorage['epoch-time']);
   };
 
 
@@ -89,11 +101,17 @@ angular.module('alarm.controllers', [])
     if (typeof (val) === 'undefined') {
       console.log('Time not selected');
     } else {
+      console.log(val);
+      epoch = val * 1000;
       $scope.timePickerObject12Hour.inputEpochTime = val;
       var selectedTime = new Date(val * 1000);
-      mins = selectedTime.getUTCMinutes();
-      hours = selectedTime.getUTCHours();
-      time = hours + ':' + mins;
+      console.log(selectedTime);
+      mins = (selectedTime.getUTCMinutes() < 10) ? ("0" + selectedTime.getUTCMinutes()) : (selectedTime.getUTCMinutes());
+      console.log(mins);
+      hours = (selectedTime.getUTCHours() < 10) ? ("0" + selectedTime.getUTCHours()) : (selectedTime.getUTCHours());
+      console.log(hours);
+      time = hours + mins;
+      console.log(time);
     }
   }
 

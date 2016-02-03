@@ -3,7 +3,7 @@
     <div class="padding">
       <div class="padding-vertical">
         <h5 class="text-center">Click to edit</h5>
-          <h1 class="alarmTime"><a href="#/tab/account">{{dashCtrl.alarmTime}}</a></h1>
+          <h1 class="alarmTime"><a href="#/tab/account">{{dashCtrl.alarmTime | date:'HH:mm'}}</a></h1>
         <div class="card">
           <div class="item item-text-wrap">
             {{dashCtrl.alert}}
