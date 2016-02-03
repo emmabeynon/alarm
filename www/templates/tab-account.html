@@ -1,22 +1,24 @@
 <ion-view view-title="Settings">
   <ion-content>
-    <ion-list>
-      <a class="item item-icon-right" id="starting-point" href="#">
-        Starting point
-        <i class="icon ion-ios-arrow-right"></i>
-      </a>
-      <a class="item item-icon-right" id="destination-point" href="#">
-        Destination point
-        <i class="icon ion-ios-arrow-right"></i>
-      </a>
-      <a class="item item-icon-right" id="arrival-time" href="#">
-        Arrival time
-        <i class="icon ion-ios-arrow-right"></i>
-      </a>
-      <a class="item item-icon-right" id="preparation-time" href="#">
-        Preparation time
-        <i class="icon ion-ios-arrow-right"></i>
-      </a>
-    </ion-list>
+    <div class="list">
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Starting Point</span>
+      <input type="text" placeholder="e.g. E1 6LT">
+    </label>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Destination Point</span>
+      <input type="text" placeholder="e.g. E1 6LT">
+    </label>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Arrival Time</span>
+      <input type="text" placeholder="e.g. E1 6LT">
+    </label>
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Preparation time</span>
+      <input type="text" placeholder="e.g. E1 6LT">
+    </label>
+    <button class="button button-block button-positive">
+      Save
+    </button>
   </ion-content>
 </ion-view>
