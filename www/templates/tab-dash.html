@@ -6,8 +6,9 @@
           <h1 class="alarmTime"><a href="#/tab/account">{{dashCtrl.alarmTime}}</a></h1>
         <div class="card">
           <div class="item item-text-wrap">
-            This is where travel updates will show up
+            {{dashCtrl.alert}}
           </div>
+          <button type="button" ng-click="dashCtrl.getJourneyInfo()">Request data</button>
         </div>
       </div>
     </div>

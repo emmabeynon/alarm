@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-angular.module('alarm', ['ionic', 'ionic-timepicker', 'alarm.controllers', 'alarm.services'])
+angular.module('alarm', ['ionic', 'ionic-timepicker', 'alarm.controllers', 'alarm.services', 'alarm.journeyPlannerFactory'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
