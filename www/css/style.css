@@ -1,1 +1,5 @@
-/* Empty. Add your own CSS if you like */
+.alarmTime {
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 40vw;
+}
