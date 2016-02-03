@@ -1,24 +1,26 @@
 <ion-view view-title="Settings">
-  <ion-content>
-    <div class="list">
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Starting Point</span>
-      <input type="text" placeholder="e.g. E1 6LT">
-    </label>
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Destination Point</span>
-      <input type="text" placeholder="e.g. E1 6LT">
-    </label>
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Arrival Time</span>
-      <input type="text" placeholder="e.g. E1 6LT">
-    </label>
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Preparation time</span>
-      <input type="text" placeholder="e.g. E1 6LT">
-    </label>
-    <button class="button button-block button-positive">
-      Save
-    </button>
+  <ion-content ng-controller="SettingsCtrl as settingsCtrl">
+    <form>
+      <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Starting Point</span>
+        <input ng-model="settingsCtrl.startingPoint" name="startingPoint" type="text" placeholder="e.g. E1 6LT" id="starting-point">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Destination Point</span>
+        <input type="text" placeholder="e.g. E1 6LT">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Arrival Time</span>
+        <input type="text" placeholder="e.g. E1 6LT">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Preparation time</span>
+        <input type="text" placeholder="e.g. E1 6LT">
+      </label>
+      <button class="button button-block button-positive" type="submit" ng-click="settingsCtrl.saveData(settingsCtrl.startingPoint)">
+        Save
+      </button>
+    </form>
   </ion-content>
 </ion-view>
