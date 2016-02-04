@@ -6,6 +6,7 @@ angular.module('alarm.controllers', [])
   var prepEpoch = window.localStorage['prep-time'];
   var travelEpoch = window.localStorage['duration-time'] * 60000;
   var alarmEpoch = (arrivalEpoch - prepEpoch - travelEpoch);
+  window.localStorage['alarm-time'] = alarmEpoch;
 
   $scope.callAtInterval = function() {
     self.getJourneyInfo();
