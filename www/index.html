@@ -40,13 +40,24 @@
     -->
     <ion-nav-view></ion-nav-view>
     <script type="text/javascript">
-      var now = new Date().getTime();
-      var tilAlarm = window.localStorage['alarm-time'] - now;
-      var audio = new Audio('http://s0.vocaroo.com/media/download_temp/Vocaroo_s02iHzuYg1e2.mp3');
-      console.log('tilAlarm:' + tilAlarm);
-      console.log('now:' + now);
+    var now = new Date();
+    var nowHours = now.getHours();
+    var nowMinutes = now.getMinutes();
+    var nowSeconds = now.getSeconds();
+    var nowMilliseconds = ((nowHours * 60 * 60) + (nowMinutes * 60) + (nowSeconds)) * 1000;
+    var alarmTime = window.localStorage['alarm-time'] // miliseconds
+    var tilAlarm = alarmTime - nowMilliseconds;
+    var audio = new Audio('http://s0.vocaroo.com/media/download_temp/Vocaroo_s02iHzuYg1e2.mp3');
+    console.log('Now:' + now);
+    console.log('NowHours:' + nowHours);
+    console.log('NowMinutes:' + nowMinutes);
+    console.log('NowSeconds:' + nowSeconds);
+    console.log('NowMilliseconds:' + nowMilliseconds);
+    console.log('alarmTime: ' + alarmTime);
+    console.log('tilAlarm: ' + tilAlarm);
       var check = function() {
         setTimeout(function() {
+          console.log('Hello');
           audio.play();
         }, tilAlarm);
       }

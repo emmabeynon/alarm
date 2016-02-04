@@ -1,9 +1,5 @@
 angular.module('alarm.controllers', [])
 
-
-
-
-
 .controller('DashCtrl', function($scope, JourneyPlanner) {
   var self = this;
   var arrivalEpoch = window.localStorage['epoch-time'];
@@ -102,17 +98,13 @@ angular.module('alarm.controllers', [])
     if (typeof (val) === 'undefined') {
       console.log('Time not selected');
     } else {
-      console.log(val);
       epoch = val * 1000;
       $scope.timePickerObject12Hour.inputEpochTime = val;
       var selectedTime = new Date(val * 1000);
-      console.log(selectedTime);
       mins = (selectedTime.getUTCMinutes() < 10) ? ("0" + selectedTime.getUTCMinutes()) : (selectedTime.getUTCMinutes());
-      console.log(mins);
       hours = (selectedTime.getUTCHours() < 10) ? ("0" + selectedTime.getUTCHours()) : (selectedTime.getUTCHours());
-      console.log(hours);
-      time = hours + mins;
-      console.log(time);
+      time = hours + "" + mins;
+      time = parseInt(time);
     }
   }
 
