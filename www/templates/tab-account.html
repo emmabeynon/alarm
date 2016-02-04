@@ -23,7 +23,7 @@
         <span class="input-label">Preparation time</span>
         <input type="number" placeholder="How long does it take to get ready?" ng-model="settingsCtrl.prepTime" name="prepTime">
       </label>
-      <button class="button button-block button-positive" type="submit" ng-click="settingsCtrl.saveData(settingsCtrl.startingPoint, settingsCtrl.endPoint, settingsCtrl.prepTime)">
+      <button ng-controller="DashCtrl as dashCtrl" class="button button-block button-positive" type="submit" ng-click="settingsCtrl.saveData(settingsCtrl.startingPoint, settingsCtrl.endPoint, settingsCtrl.prepTime); dashCtrl.getJourneyInfo()">
         Save
       </button>
     </form>

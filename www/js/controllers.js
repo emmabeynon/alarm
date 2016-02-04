@@ -1,21 +1,22 @@
 angular.module('alarm.controllers', [])
+.controller('DashCtrl', function($scope, JourneyPlanner, $interval) {
 
-
-
-
-
-.controller('DashCtrl', function($scope, JourneyPlanner) {
   var self = this;
   var arrivalEpoch = window.localStorage['epoch-time'];
   var prepEpoch = window.localStorage['prep-time'];
   var travelEpoch = window.localStorage['duration-time'] * 60000;
   var alarmEpoch = (arrivalEpoch - prepEpoch - travelEpoch);
 
+  $scope.callAtInterval = function() {
+    self.getJourneyInfo();
+    console.log("interval test");
+  };
+
+  $interval(function() { $scope.callAtInterval(); }, 30000);
+
   console.log(alarmEpoch);
   self.alarmTime = alarmEpoch;
   self.epoch = window.localStorage['epoch-time'];
-
-
 
   self.getJourneyInfo = function() {
     console.log("test");
@@ -38,31 +39,14 @@ angular.module('alarm.controllers', [])
         console.log(response.data);
       });
   };
+
 })
 
-.controller('ApiCtrl', function($scope, JourneyPlanner) {
+.controller('ApiCtrl', function($scope) {
  var self = this;
  var start;
  var end;
-
-
 })
-
-// .controller('ChatsCtrl', function($scope, Chats) {
-//   // With the new view caching in Ionic, Controllers are only called
-//   // when they are recreated or on app start, instead of every page change.
-//   // To listen for when this page is active (for example, to refresh data),
-//   // listen for the $ionicView.enter event:
-//   //
-//   //$scope.$on('$ionicView.enter', function(e) {
-//   //});
-//
-//   $scope.chats = Chats.all();
-//   $scope.remove = function(chat) {
-//     Chats.remove(chat);
-//   };
-// })
-
 
 .controller('SettingsCtrl', function($scope) {
   var self = this;
@@ -110,7 +94,8 @@ angular.module('alarm.controllers', [])
       console.log(mins);
       hours = (selectedTime.getUTCHours() < 10) ? ("0" + selectedTime.getUTCHours()) : (selectedTime.getUTCHours());
       console.log(hours);
-      time = hours + mins;
+      time = hours + "" + mins;
+      time = parseInt(time);
       console.log(time);
     }
   }
