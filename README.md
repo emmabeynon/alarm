@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/emmabeynon/alarm.png?label=ready&title=Ready)](https://waffle.io/emmabeynon/alarm)
 # Alarm
 Problem Statement
 -----------------
